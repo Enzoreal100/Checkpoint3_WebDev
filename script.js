@@ -5,24 +5,63 @@ function upperCase() {
     voucher.value = voucher.value.toUpperCase();
 }
 
-function entrar() {
+function lowerCase() {
     const email = document.getElementById("email");
-    const senha = document.getElementById("senha");
-
-    email.value = email.value.toUpperCase();
-    senha.value = senha.vale.toUpperCase();
+    email.value = email.value.toLowerCase();
 }
-document.getElementById("maistelefone").addEventListener("click", displayDate)
+function entrar() {
+    const emailLogin = document.getElementById("email");
+    const senhaLogin = document.getElementById("senha");
 
+}
+//codigo botao dinamico telefone
+let fsList = document.querySelectorAll('.multiple-field');
+for(let i = 0; i < fsList.length; i++){
+    initMultipleFieldSet(fsList[i]);
+}
+
+//adicionar multiplos elementos
+function initMultipleFieldSet(fs){
+    //criar elemento botão
+    let addButton = document.createElement('button');
+    //texto no botão
+    addButton.textContent = 'Adicionar';
+    //tipo do elemento = botão
+    addButton.type = 'button';
+
+    fs.appendChild(addButton);
+
+    let firstInput = fs.querySelector('input');
+
+    addButton.addEventListener('click', function(){
+        let div = document.createElement('div');
+        let newInput = document.createElement('input');
+        newInput.name = firstInput.name;
+        newInput.type = firstInput.type;
+
+        let deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Excluir';
+        deleteButton.type = 'button';
+
+        div.appendChild(newInput);
+        div.appendChild(deleteButton);
+
+        deleteButton.addEventListener('click', function(){
+            div.remove();
+        });
+
+        fs.insertBefore(div,addButton);
+    });
+}
+
+//função pra registrar
 function registrar() {
-    const email = document.getElementById("email");
-    const senha = document.getElementById("senha");
-    const voucher = document.getElementById("voucher");
-    const perfil = document.getElementsByName("Perfil");
-    const observacao = document.getElementsByName("observacao");
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
+    const voucher = document.getElementById("voucher").value;
+    const perfil = document.getElementById("Perfil");
+    const observacao = document.getElementById("observacao").value;
 
-    email.value = email.value.toUpperCase();
-    senha.value = senha.value.toUpperCase();
     const validavoucher = ["SEJAPRATA", "SEJAOURO", "SEJADIAMANTE"];
     if (observacao === "A") {
         if (voucher !== validavoucher[0]) {
@@ -39,4 +78,6 @@ function registrar() {
     }
 
     let validacao = [email, senha, voucher, perfil, observacao];
+    return validacao
 }
+console.log(registrar())

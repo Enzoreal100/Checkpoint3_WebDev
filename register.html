@@ -11,31 +11,26 @@
 
 <body>
     <h1>Crie sua conta!</h1>
-    <p>Nome</p>
     <form action="">
-        <p>Email:</p>
-        <input type="email" name="email" id="email">
+        <p>Nome: <input type="text" name="nome" id="nome"></p>
+        <p>Email: <input type="email" name="email" id="email" oninput="lowerCase()"></p>
+        <p>Senha: <input type="password" name="password" id="senha"></p>
         <br>
-        <p>Senha:</p>
-        <input type="password" name="password" id="senha">
-        <br>
-        <p>Voucher:</p>
-        <input ontype="text" name="voucher" id="voucher" oninput="upperCase()">
-        <br>
-        <br>
-        <p>telefone</p>
-        <input type="tel" name="telefone" id="telefone">
-        <br>
-        <button id="maistelefone">Tente</button> 
+        <fieldset class="multiple-field" width="10">
+            <legend>Telefone</legend>
+            <div><input type="tel"></div>
+        </fieldset>
         <br>
         <p align="left">Perfil
-            <select name="Perfil">
+            <select id='perfil' name="Perfil">
                 <option value="A">Prata</option>
                 <option value="B">Ouro</option>
                 <option value="C">Diamante</option>
             </select>
         </p>
-        <textarea name="observacao" rows="10" cols="60"></textarea>
+        <p>Voucher:<input ontype="text" name="voucher" id="voucher" oninput="upperCase()"></p>
+        <br>
+        <p>Observações: <textarea name="observacao" id="observacao" rows="10" cols="60"></textarea></p>
         <br>
         <button onclick="registrar()" id='registrar' type="submit">registre-se!</button>
         <br>
